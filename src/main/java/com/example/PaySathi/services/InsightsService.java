@@ -3,6 +3,7 @@ package com.example.PaySathi.services;
 import com.example.PaySathi.dto.CustomerCreditResponse;
 import com.example.PaySathi.dto.CustomerSummaryResponse;
 import com.example.PaySathi.dto.OverdueInvoiceResponse;
+import com.example.PaySathi.exception.ResourceNotFoundException;
 import com.example.PaySathi.mapper.CustomerMapper;
 import com.example.PaySathi.mapper.InvoiceMapper;
 import com.example.PaySathi.models.Customer;
@@ -31,7 +32,7 @@ public class InsightsService {
     public CustomerSummaryResponse getCustomerSummary(String externalId) {
         Customer customer = customerRepository
                 .findByExternalId(externalId)
-                .orElseThrow(() -> new RuntimeException("Customer not found: " + externalId));
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found: " + externalId));
 
         List<Invoice> invoices = invoiceRepository.findByCustomerId(customer.getId());
 

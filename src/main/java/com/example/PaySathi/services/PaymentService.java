@@ -2,6 +2,7 @@ package com.example.PaySathi.services;
 
 
 import com.example.PaySathi.dto.PaymentDTO;
+import com.example.PaySathi.exception.SyncException;
 import com.example.PaySathi.gateway.AccountingGateway;
 import com.example.PaySathi.mapper.PaymentMapper;
 import com.example.PaySathi.models.Invoice;
@@ -64,7 +65,7 @@ public class PaymentService {
         } catch (Exception e) {
             syncLogService.failLog(syncLog, e.getMessage());
             log.error("Payment sync failed: {}", e.getMessage());
-            throw e;
+            throw new SyncException("Payment sync failed: " + e.getMessage(), e);
         }
     }
 }

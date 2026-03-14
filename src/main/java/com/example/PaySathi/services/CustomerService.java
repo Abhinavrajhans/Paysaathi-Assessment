@@ -1,5 +1,6 @@
 package com.example.PaySathi.services;
 
+import com.example.PaySathi.exception.SyncException;
 import com.example.PaySathi.gateway.AccountingGateway;
 import com.example.PaySathi.mapper.CustomerMapper;
 import com.example.PaySathi.repositories.CustomerRepository;
@@ -44,7 +45,8 @@ public class CustomerService {
         } catch (Exception e) {
             syncLogService.failLog(syncLog, e.getMessage());
             log.error("Customer sync failed: {}", e.getMessage());
-            throw e;
+            throw new SyncException("Customer sync failed: " + e.getMessage(), e);
         }
+
     }
 }

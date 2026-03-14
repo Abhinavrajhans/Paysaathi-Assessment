@@ -2,6 +2,7 @@ package com.example.PaySathi.services;
 
 import com.example.PaySathi.dto.InvoiceDTO;
 import com.example.PaySathi.dto.OverdueInvoiceResponse;
+import com.example.PaySathi.exception.SyncException;
 import com.example.PaySathi.gateway.AccountingGateway;
 import com.example.PaySathi.mapper.InvoiceMapper;
 import com.example.PaySathi.models.Customer;
@@ -61,10 +62,12 @@ public class InvoiceService {
             syncLogService.completeLog(syncLog, dtos.size(), saved);
             log.info("Invoice sync done — {} saved, {} skipped", saved, skipped);
 
+
         } catch (Exception e) {
             syncLogService.failLog(syncLog, e.getMessage());
             log.error("Invoice sync failed: {}", e.getMessage());
-            throw e;
+            throw new SyncException("Invoice sync failed: " + e.getMessage(), e);
         }
+
     }
 }
