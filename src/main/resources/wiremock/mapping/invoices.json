@@ -1,0 +1,57 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/invoices"
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": [
+      {
+        "id": "INV-001",
+        "customerId": "CUST-001",
+        "totalAmount": 50000.00,
+        "paidAmount": 20000.00,
+        "status": "PARTIALLY_PAID",
+        "issueDate": "2025-01-10",
+        "dueDate": "2025-02-10"
+      },
+      {
+        "id": "INV-002",
+        "customerId": "CUST-001",
+        "totalAmount": 30000.00,
+        "paidAmount": 0.00,
+        "status": "OVERDUE",
+        "issueDate": "2024-11-01",
+        "dueDate": "2024-12-01"
+      },
+      {
+        "id": "INV-003",
+        "customerId": "CUST-002",
+        "totalAmount": 75000.00,
+        "paidAmount": 75000.00,
+        "status": "PAID",
+        "issueDate": "2025-01-15",
+        "dueDate": "2025-02-15"
+      },
+      {
+        "id": "INV-004",
+        "customerId": "CUST-002",
+        "totalAmount": 40000.00,
+        "paidAmount": 0.00,
+        "status": "SENT",
+        "issueDate": "2025-02-01",
+        "dueDate": "2025-03-01"
+      },
+      {
+        "id": "INV-005",
+        "customerId": "CUST-003",
+        "totalAmount": 90000.00,
+        "paidAmount": 0.00,
+        "status": "OVERDUE",
+        "issueDate": "2024-10-01",
+        "dueDate": "2024-11-01"
+      }
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/api/payments"
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": [
+      {
+        "id": "PAY-001",
+        "invoiceId": "INV-001",
+        "amount": 20000.00,
+        "paymentDate": "2025-01-20",
+        "method": "BANK_TRANSFER",
+        "reference": "UTR123456789"
+      },
+      {
+        "id": "PAY-002",
+        "invoiceId": "INV-003",
+        "amount": 75000.00,
+        "paymentDate": "2025-01-25",
+        "method": "UPI",
+        "reference": "UPI987654321"
+      },
+      {
+        "id": "PAY-003",
+        "invoiceId": "INV-003",
+        "amount": 15000.00,
+        "paymentDate": "2025-02-01",
+        "method": "CASH",
+        "reference": "CASH-2025-001"
+      }
+    ]
+  }
+}

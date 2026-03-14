@@ -1,0 +1,17 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/customers/([^/]+)"
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "id": "CUST-001",
+      "name": "Ravi Shankar Enterprises",
+      "email": "ravi@shankar.com",
+      "phone": "9876543210",
+      "address": "12 MG Road, Bengaluru"
+    }
+  }
+}

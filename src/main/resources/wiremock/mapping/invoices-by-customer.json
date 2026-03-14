@@ -1,0 +1,24 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPath": "/api/invoices",
+    "queryParameters": {
+      "customerId": { "matches": ".+" }
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": [
+      {
+        "id": "INV-001",
+        "customerId": "CUST-001",
+        "totalAmount": 50000.00,
+        "paidAmount": 20000.00,
+        "status": "PARTIALLY_PAID",
+        "issueDate": "2025-01-10",
+        "dueDate": "2025-02-10"
+      }
+    ]
+  }
+}

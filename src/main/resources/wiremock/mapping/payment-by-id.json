@@ -1,0 +1,18 @@
+{
+  "request": {
+    "method": "GET",
+    "urlPathPattern": "/api/payments/([^/]+)"
+  },
+  "response": {
+    "status": 200,
+    "headers": { "Content-Type": "application/json" },
+    "jsonBody": {
+      "id": "PAY-001",
+      "invoiceId": "INV-001",
+      "amount": 20000.00,
+      "paymentDate": "2025-01-20",
+      "method": "BANK_TRANSFER",
+      "reference": "UTR123456789"
+    }
+  }
+}
