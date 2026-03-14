@@ -71,7 +71,7 @@ public class InsightsService {
     public CustomerCreditResponse getCustomerCreditProfile(String externalId) {
         Customer customer = customerRepository
                 .findByExternalId(externalId)
-                .orElseThrow(() -> new RuntimeException("Customer not found: " + externalId));
+                .orElseThrow(() -> new ResourceNotFoundException("Customer not found: " + externalId));
 
         List<Invoice> overdueInvoices = invoiceRepository
                 .findByCustomerIdAndStatus(customer.getId(), InvoiceStatus.OVERDUE);
