@@ -67,12 +67,4 @@ public class InvoiceService {
             throw e;
         }
     }
-
-    public List<OverdueInvoiceResponse> getAllOverdueInvoices() {
-        return invoiceRepository
-                .findByStatusWithCustomer(InvoiceStatus.OVERDUE)
-                .stream()
-                .map(InvoiceMapper::toOverdueInvoiceResponse)
-                .toList();
-    }
 }
