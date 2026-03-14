@@ -33,4 +33,7 @@ public class Payment extends BaseEntity {
 
     private String reference;    // e.g. UPI number, cheque number
 
+    @Column(name = "synced_at")
+    private LocalDateTime syncedAt;
+
 }
