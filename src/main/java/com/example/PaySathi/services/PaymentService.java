@@ -7,7 +7,6 @@ import com.example.PaySathi.mapper.PaymentMapper;
 import com.example.PaySathi.models.Invoice;
 import com.example.PaySathi.models.Payment;
 import com.example.PaySathi.models.SyncLog;
-import com.example.PaySathi.repositories.CustomerRepository;
 import com.example.PaySathi.repositories.InvoiceRepository;
 import com.example.PaySathi.repositories.PaymentRepository;
 import lombok.RequiredArgsConstructor;
