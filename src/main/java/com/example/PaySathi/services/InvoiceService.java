@@ -70,7 +70,7 @@ public class InvoiceService {
 
     public List<OverdueInvoiceResponse> getAllOverdueInvoices() {
         return invoiceRepository
-                .findByStatus(InvoiceStatus.OVERDUE)
+                .findByStatusWithCustomer(InvoiceStatus.OVERDUE)
                 .stream()
                 .map(InvoiceMapper::toOverdueInvoiceResponse)
                 .toList();

@@ -15,9 +15,6 @@ public interface InvoiceRepository extends JpaRepository<Invoice,Long> {
     // All invoices for a customer
     List<Invoice> findByCustomerId(Long customerId);
 
-    // All overdue invoices across all customers
-    List<Invoice> findByStatus(InvoiceStatus status);
-
     // All overdue invoices for a specific customer
     List<Invoice> findByCustomerIdAndStatus(Long customerId, InvoiceStatus status);
 
@@ -29,4 +26,7 @@ public interface InvoiceRepository extends JpaRepository<Invoice,Long> {
 
     // Count of overdue invoices for a customer
     long countByCustomerIdAndStatus(Long customerId, InvoiceStatus status);
+
+    @Query("SELECT i FROM Invoice i JOIN FETCH i.customer WHERE i.status = :status")
+    List<Invoice> findByStatusWithCustomer(@Param("status") InvoiceStatus status);
 }
