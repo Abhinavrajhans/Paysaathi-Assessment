@@ -2,10 +2,8 @@ package com.example.PaySathi.mapper;
 
 import com.example.PaySathi.dto.CustomerDTO;
 import com.example.PaySathi.models.Customer;
-import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
-@Component
 public class CustomerMapper {
 
     // DTO → new Model (for inserts)

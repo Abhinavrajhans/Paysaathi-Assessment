@@ -3,10 +3,8 @@ package com.example.PaySathi.mapper;
 import com.example.PaySathi.dto.PaymentDTO;
 import com.example.PaySathi.models.Invoice;
 import com.example.PaySathi.models.Payment;
-import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
-@Component
 public class PaymentMapper {
 
     public static Payment toEntity(PaymentDTO dto, Invoice invoice) {
