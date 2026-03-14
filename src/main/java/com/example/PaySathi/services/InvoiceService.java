@@ -1,10 +1,12 @@
 package com.example.PaySathi.services;
 
 import com.example.PaySathi.dto.InvoiceDTO;
+import com.example.PaySathi.dto.OverdueInvoiceResponse;
 import com.example.PaySathi.gateway.AccountingGateway;
 import com.example.PaySathi.mapper.InvoiceMapper;
 import com.example.PaySathi.models.Customer;
 import com.example.PaySathi.models.Invoice;
+import com.example.PaySathi.models.InvoiceStatus;
 import com.example.PaySathi.models.SyncLog;
 import com.example.PaySathi.repositories.CustomerRepository;
 import com.example.PaySathi.repositories.InvoiceRepository;
@@ -64,5 +66,13 @@ public class InvoiceService {
             log.error("Invoice sync failed: {}", e.getMessage());
             throw e;
         }
+    }
+
+    public List<OverdueInvoiceResponse> getAllOverdueInvoices() {
+        return invoiceRepository
+                .findByStatus(InvoiceStatus.OVERDUE)
+                .stream()
+                .map(InvoiceMapper::toOverdueInvoiceResponse)
+                .toList();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.PaySathi.mapper;
 
 import com.example.PaySathi.dto.InvoiceDTO;
+import com.example.PaySathi.dto.OverdueInvoiceResponse;
 import com.example.PaySathi.models.Customer;
 import com.example.PaySathi.models.Invoice;
 import com.example.PaySathi.models.InvoiceStatus;
@@ -41,6 +42,34 @@ public class InvoiceMapper {
     public static void mapToEntity(InvoiceDTO dto, Invoice invoice, Customer customer) {
         invoice.setExternalId(dto.getExternalId());
         updateEntity(dto, invoice, customer);
+    }
+
+    public static OverdueInvoiceResponse toOverdueInvoiceResponse(Invoice invoice) {
+        return OverdueInvoiceResponse.builder()
+                .invoiceExternalId(invoice.getExternalId())
+                .customerName(invoice.getCustomer().getName())
+                .customerExternalId(invoice.getCustomer().getExternalId())
+                .totalAmount(invoice.getTotalAmount())
+                .paidAmount(invoice.getPaidAmount())
+                .outstandingAmount(invoice.getOutstandingAmount())
+                .dueDate(invoice.getDueDate())
+                .daysOverdue(java.time.temporal.ChronoUnit.DAYS
+                        .between(invoice.getDueDate(), LocalDate.now()))
+                .build();
+    }
+
+    public static OverdueInvoiceResponse toOverdueInvoiceResponse(Invoice invoice,String name,String externalId) {
+        return OverdueInvoiceResponse.builder()
+                .invoiceExternalId(invoice.getExternalId())
+                .customerName(name)
+                .customerExternalId(externalId)
+                .totalAmount(invoice.getTotalAmount())
+                .paidAmount(invoice.getPaidAmount())
+                .outstandingAmount(invoice.getOutstandingAmount())
+                .dueDate(invoice.getDueDate())
+                .daysOverdue(java.time.temporal.ChronoUnit.DAYS
+                        .between(invoice.getDueDate(), LocalDate.now()))
+                .build();
     }
 
     private static InvoiceStatus deriveStatus(InvoiceDTO dto) {
